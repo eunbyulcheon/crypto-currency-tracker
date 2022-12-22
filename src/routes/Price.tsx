@@ -13,13 +13,7 @@ function Price({ coinId }: ChartProps) {
 		}
 	);
 
-	const quotes = quotesData.quotes.USD;
-
-	const authDate = new Date(quotes.ath_date).toLocaleDateString('en-US', {
-		day: 'numeric',
-		month: 'short',
-		year: 'numeric',
-	});
+	const quotes = quotesData?.quotes.USD;
 
 	return (
 		<>
@@ -29,7 +23,7 @@ function Price({ coinId }: ChartProps) {
 				<Wrapper>
 					<QuoteItem>
 						<Title>ATH DATE</Title>
-						<Data>{authDate}</Data>
+						<Data>{quotes?.ath_date}</Data>
 					</QuoteItem>
 					<QuoteItem>
 						<Title>ATH PRICE</Title>
@@ -98,6 +92,7 @@ const QuoteItem = styled.div`
 	&:nth-child(1) {
 		grid-column: 1 / span 2;
 		width: auto;
+		padding: 15px 0;
 	}
 
 	&:nth-child(2) {

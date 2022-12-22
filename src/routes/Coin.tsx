@@ -190,7 +190,7 @@ const Title = styled.h1`
 	font-size: 48px;
 `;
 
-const HomeButton = styled.button`
+export const HomeButton = styled.button`
 	position: fixed;
 	top: 30px;
 	left: 30px;

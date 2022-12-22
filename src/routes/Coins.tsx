@@ -3,6 +3,11 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchCoins } from '../api';
+import { BsMoonFill } from 'react-icons/bs';
+import { FaSun } from 'react-icons/fa';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { isDarkAtom } from '../atoms';
+import { HomeButton } from './Coin';
 
 interface ICoin {
 	id: string;
@@ -15,15 +20,22 @@ interface ICoin {
 }
 
 function Coins() {
+	const isDark = useRecoilValue(isDarkAtom);
+	const setDarkAtom = useSetRecoilState(isDarkAtom);
+	const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
+
 	const { isLoading, data } = useQuery<ICoin[]>('allCoins', fetchCoins);
 
 	return (
 		<Container>
 			<Helmet>
-				<title>Crypto Coins</title>
+				<title>Crypto Currency</title>
 			</Helmet>
 			<Header>
 				<Title>CRYPTO COINS</Title>
+				<ToggleBtn onClick={toggleDarkAtom}>
+					{isDark ? <BsMoonFill /> : <FaSun />}
+				</ToggleBtn>
 			</Header>
 
 			{isLoading ? (
@@ -66,6 +78,8 @@ const Title = styled.h1`
 	font-size: 48px;
 `;
 
+const ToggleBtn = styled(HomeButton)``;
+
 const Loader = styled.span`
 	text-align: center;
 	display: block;
@@ -80,9 +94,10 @@ const Img = styled.img`
 `;
 
 const Coin = styled.li`
-	background-color: #fff;
-	color: ${(props) => props.theme.bgColor};
+	background-color: ${(props) => props.theme.cardBgColor};
+	color: ${(props) => props.theme.textColor};
 	margin-bottom: 10px;
+	border: 1px solid #fff;
 	border-radius: 15px;
 
 	a {
