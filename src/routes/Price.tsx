@@ -79,15 +79,10 @@ const QuoteItem = styled.div`
 	width: 100px;
 	height: 100px;
 	padding: 22px 0;
-	border: 2px solid ${(props) => props.theme.textColor};
+	border: none;
 	border-radius: 15px;
-	background-color: ${(props) => props.theme.textColor};
+	background-color: rgba(0, 0, 0, 0.35);
 	text-align: center;
-
-	&:hover {
-		border: 2px solid #7b6fc5;
-		background-color: rgba(156, 136, 254, 0.7);
-	}
 
 	&:nth-child(1) {
 		grid-column: 1 / span 2;
@@ -105,7 +100,7 @@ const Title = styled.h3`
 	margin-bottom: 8px;
 	font-size: 16px;
 	font-family: inherit;
-	color: ${(props) => props.theme.bgColor};
+	color: 'whitesmoke';
 `;
 
 const Data = styled.h2`
@@ -113,7 +108,7 @@ const Data = styled.h2`
 	font-weight: 800;
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
 		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	color: ${(props) => props.theme.downColor};
+	color: ${(props) => props.theme.accentColor};
 `;
 
 export default Price;

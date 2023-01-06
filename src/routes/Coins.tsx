@@ -7,7 +7,6 @@ import { BsMoonFill } from 'react-icons/bs';
 import { FaSun } from 'react-icons/fa';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isDarkAtom } from '../atoms';
-import { HomeButton } from './Coin';
 
 interface ICoin {
 	id: string;
@@ -32,9 +31,9 @@ function Coins() {
 				<title>Crypto Currency</title>
 			</Helmet>
 			<Header>
-				<Title>CRYPTO COINS</Title>
+				<Title>CRYPTO CURRENCY</Title>
 				<ToggleBtn onClick={toggleDarkAtom}>
-					{isDark ? <BsMoonFill /> : <FaSun />}
+					{isDark ? <FaSun style={{ color: '#fff' }} /> : <BsMoonFill />}
 				</ToggleBtn>
 			</Header>
 
@@ -78,7 +77,18 @@ const Title = styled.h1`
 	font-size: 48px;
 `;
 
-const ToggleBtn = styled(HomeButton)``;
+const ToggleBtn = styled.button`
+	position: fixed;
+	top: 30px;
+	left: 30px;
+	padding: 10px 11px;
+	border: none;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.4);
+	font-size: 25px;
+	line-height: 18px;
+	color: #000;
+`;
 
 const Loader = styled.span`
 	text-align: center;

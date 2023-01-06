@@ -108,14 +108,13 @@ function Coin() {
 				</title>
 			</Helmet>
 			<Header>
+				<HomeButton onClick={() => history.push('/')}>
+					<AiOutlineHome />
+				</HomeButton>
 				<Title>
 					{state?.name ? state.name : loading ? 'Loading...' : infoData?.name}
 				</Title>
 			</Header>
-
-			<HomeButton onClick={() => history.push('/')}>
-				<AiOutlineHome />
-			</HomeButton>
 
 			{loading ? (
 				<Loader>Loading...</Loader>
@@ -181,31 +180,23 @@ const Container = styled.div`
 const Header = styled.header`
 	height: 15vh;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 `;
 
 const Title = styled.h1`
+	margin-left: 100px;
+	padding-bottom: 5px;
 	color: ${(props) => props.theme.accentColor};
 	font-size: 48px;
 `;
 
-export const HomeButton = styled.button`
-	position: fixed;
-	top: 30px;
-	left: 30px;
-	border: 2px solid #fff;
-	border-radius: 50%;
+const HomeButton = styled.button`
+	justify-self: flex-start;
+	border: none;
 	background-color: transparent;
-	color: #fff;
-	font-size: 20px;
-	padding: 10px 12px;
-
-	&:hover,
-	:active {
-		background-color: ${(props) => props.theme.accentColor};
-		border: 2px solid ${(props) => props.theme.accentColor};
-	}
+	color: ${(props) => props.theme.accentColor};
+	font-size: 40px;
 `;
 
 const Loader = styled.span`
